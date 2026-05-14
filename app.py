@@ -10,6 +10,7 @@ HEADERS = {"authorization": API_KEY}
 
 # ── Dizajn ────────────────────────────────────────────────────────────────────
 st.set_page_config(page_title="Lana Transcribe", page_icon="🎙️", layout="centered")
+st.markdown('<div style="position:fixed;top:8px;left:12px;color:#444;font-size:11px;z-index:9999;">v1.2</div>', unsafe_allow_html=True)
 
 st.markdown("""
 <style>
@@ -89,10 +90,11 @@ if uploaded_file is not None:
 
             # KORAK 2 — Zahtjev za transkripciju
             transcript_request = {
-                "audio_url":    upload_url,
+                "audio_url":     upload_url,
                 "language_code": lang_code,
-                "punctuate":    True,
-                "format_text":  True,
+                "speech_model":  "universal-2",
+                "punctuate":     True,
+                "format_text":   True,
             }
 
             transcript_response = requests.post(
