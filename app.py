@@ -29,7 +29,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h1>🎙️ MARKO TRANSCRIBE</h1>", unsafe_allow_html=True)
+st.markdown("<h1>🎙️ Lana TRANSCRIBE</h1>", unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Personal Transcription Tool</div>', unsafe_allow_html=True)
 
 # ── Jezik ─────────────────────────────────────────────────────────────────────
