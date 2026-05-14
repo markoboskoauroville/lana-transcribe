@@ -60,10 +60,10 @@ RECORDER_HTML = """
     style="width:100%;height:60px;background:#0a0a0a;border-radius:4px;display:block;margin-bottom:10px;"></canvas>
 
   <div style="display:flex;gap:10px;margin-bottom:12px;">
-    <button id="btnStart" onclick="startRec()"
+    <button id="btn" onclick="Rec()"
       style="flex:1;background:#ff6600;color:#000;border:none;border-radius:4px;
              padding:12px;font-weight:700;font-size:13px;letter-spacing:1px;cursor:pointer;">
-      ▶ START
+      ▶ REC
     </button>
     <button id="btnStop" onclick="stopRec()" disabled
       style="flex:1;background:#333;color:#666;border:1px solid #444;border-radius:4px;
