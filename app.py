@@ -29,7 +29,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h1>🎙️ Lana TRANSCRIBE</h1>", unsafe_allow_html=True)
+st.markdown("<h1>🎙️ Lana Transcribe</h1>", unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Personal Transcription Tool</div>', unsafe_allow_html=True)
 
 # ── Jezik ─────────────────────────────────────────────────────────────────────
@@ -303,7 +303,7 @@ def upload_with_progress(audio_bytes):
     resp.raise_for_status()
     return resp.json()["upload_url"]
 
-def transcribe(audio_bytes, filename="audio"):
+def Transcribe(audio_bytes, filename="audio"):
     upload_url = upload_with_progress(audio_bytes)
     st.info("✓ Uploadano. Pokrećem transkripciju...")
 
@@ -372,7 +372,7 @@ if uploaded_file:
     )
     if st.button("▶  POKRETANJE TRANSKRIPCIJE"):
         try:
-            output_text = transcribe(uploaded_file.read(), uploaded_file.name)
+            output_text = Transcribe(uploaded_file.read(), uploaded_file.name)
             base = os.path.splitext(uploaded_file.name)[0]
             tc_s = "_timecode" if include_timecode else ""
             download_filename = f"{base}_{lang_code}{tc_s}.txt"
