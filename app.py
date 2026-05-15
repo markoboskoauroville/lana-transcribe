@@ -18,7 +18,7 @@ API_KEY        = st.secrets["ASSEMBLYAI_API_KEY"]
 HEADERS        = {"authorization": API_KEY}
 ADMIN_PASSWORD = st.secrets.get("ADMIN_PASSWORD", "admin123")
 
-SETTINGS_FILE = Path("/tmp/marko_settings.json")
+SETTINGS_FILE = Path("/tmp/Lana_settings.json")
 
 def load_settings():
     if SETTINGS_FILE.exists():
@@ -29,7 +29,7 @@ def load_settings():
     return {
         "sheet_url":         st.secrets.get("GOOGLE_SHEET_URL", ""),
         "monthly_limit_min": int(st.secrets.get("MONTHLY_LIMIT_MIN", 180)),
-        "app_title":         "MARKO TRANSCRIBE",
+        "app_title":         "Lana TRANSCRIBE",
     }
 
 def save_settings(s):
