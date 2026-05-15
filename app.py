@@ -20,7 +20,7 @@ from google.oauth2.service_account import Credentials
 API_KEY        = st.secrets["ASSEMBLYAI_API_KEY"]
 HEADERS        = {"authorization": API_KEY}
 ADMIN_PASSWORD = st.secrets.get("ADMIN_PASSWORD", "admin123")
-SETTINGS_FILE  = Path("/tmp/Lana_settings.json")
+SETTINGS_FILE  = Path("/tmp/marko_settings.json")
 
 def load_settings():
     if SETTINGS_FILE.exists():
@@ -30,7 +30,7 @@ def load_settings():
             pass
     return {
         "sheet_url": st.secrets.get("GOOGLE_SHEET_URL", ""),
-        "app_title": "Lana TRANSCRIBE",
+        "app_title": "MARKO TRANSCRIBE",
     }
 
 def save_settings(s):
@@ -697,9 +697,24 @@ with st.expander("🔊  READ TRANSCRIPT — Edge Neural Voice",
                     if not audio_data:
                         st.error("Nije vraćen audio. Pokušaj ponovo.")
                     else:
+                        
+                        
                         audio_b64   = base64.b64encode(audio_data).decode("utf-8")
                         player_html = build_tts_player(clean_text, audio_b64, word_boundaries)
                         st.components.v1.html(player_html, height=480, scrolling=False)
+
+                        safe_name = re.sub(r'[^a-z0-9]+', '_', lang_label.lower())
+                        tts_filename = f"tts_{safe_name}_{gender.split()[1].lower()}.mp3"
+                        st.download_button(
+                            label="⬇  PREUZMI AUDIO (MP3)",
+                            data=audio_data,
+                            file_name=tts_filename,
+                            mime="audio/mpeg",
+                            key="tts_download"
+                        )                        
+                        
+                        
+                        
                 except Exception as exc:
                     st.error(f"TTS greška: {exc}")
 
